@@ -1,0 +1,35 @@
+<div class="page">
+  <div class="user-post-details">
+
+      <h5> {{userPost.title}} </h5>
+      <div class="row">
+        <img class="postImg" *ngIf="showImage" [src]="userPost.imgUrl" (error)="updateUrl()" style="height: 250px; width: auto ">
+        <br>{{userPost.text}}
+      </div>
+
+  <br>
+  </div>
+  <hr class="solid">
+  <div class="user-post-details">
+  <form [formGroup]="commentForm">
+    <div class ="collumn">
+      <div class="row">
+        <div class="form-group">
+          <label for="exampleFormControlTextarea1">Comment</label>
+          <textarea class="form-control" formControlName="text" rows="3" required="true"></textarea>
+        </div>
+      </div>
+      <div class="form-group">
+        <button type="button" class="btn btn-secondary btn-lg" (click)="submit()">Submit </button>
+      </div>
+    </div>
+  </form>
+  <br>
+  <div>Comments</div>
+  <div *ngFor="let comment of comments">
+    <app-comment [comment]="comment">
+    </app-comment>
+  </div>
+
+  </div>
+</div>

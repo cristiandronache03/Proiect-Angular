@@ -1,0 +1,12 @@
+<div class="page">
+  <div class="feed">
+    <br>
+    <h5> You are being followed by: </h5>
+  <div class="followers-list" >
+  <div *ngFor="let user of users">
+      <app-user-card [user]="user">
+      </app-user-card>
+  </div>
+  </div>
+  </div>
+</div>

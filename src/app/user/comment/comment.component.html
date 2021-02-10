@@ -1,0 +1,11 @@
+<div
+  class="card"
+  style="width: 18rem; margin-bottom: 30px"
+  >
+  <div class="card-body">
+    <h6 class="card-subtitle mb-2 text-muted" (click)="goToUserProfile()">{{ comment.username }}</h6>
+    <p class="card-text">{{ comment.text }}</p>
+    <i class="fas fa-trash-alt" *ngIf="owner" (click)="deleteComment(comment.id)"></i>
+  </div>
+</div>
+

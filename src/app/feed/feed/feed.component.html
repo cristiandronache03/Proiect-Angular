@@ -1,0 +1,38 @@
+<div class="feed">
+  <div class="row">
+    <br>
+    <form [formGroup]="postForm">
+      <div class="collumn">
+        <div class="row">
+          <div class="form-group">
+            <input class="form-control" type="text" formControlName="title" required="true" placeholder="Title">
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" formControlName="text" rows="3" required="true" placeholder="Post"></textarea>
+          </div>
+        </div>
+        <div class="row">
+          <div class="form-group">
+            <input class="form-control" type="text" formControlName="ImgUrl" required="false" placeholder="Image">
+          </div>
+          <div class="form-group">
+            <button type="button" class="btn btn-secondary btn-lg" (click)="addPost()">Submit </button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <div *ngIf="loading">
+      <img src="assets/loading.gif">
+    </div>
+    <br>
+    <div *ngFor="let userPost of userPosts">
+      <app-user-post [userPost]="userPost">
+      </app-user-post>
+    </div>
+  </div>
+  <div *ngIf="!loading" class="buttons">
+    <a><button type="button" class="btn btn-light" *ngIf="userPosts.length!=0"(click)="showMore()">>></button></a>
+    <div class="divider"></div>
+    <a><button type="button" class="btn btn-light" *ngIf="filters.page>1" (click)="back()"><<</button></a>
+  </div>
+</div>

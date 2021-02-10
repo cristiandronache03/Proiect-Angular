@@ -1,0 +1,10 @@
+<div class="card" style="width: 18rem;" (click)="goToUser()">
+  <meta name="referrer" content="no-referrer"/>
+  <br>
+  <img class="card-img-top" [src]="image" (error)="this.image = '/assets/user.png'">
+  <div class="card-body">
+    <h5 class="card-title" style="text-align: center;">{{username}}</h5>
+    <h6 class="card-subtitle" style="text-align: center;">{{gender}} {{age}}</h6>
+  </div>
+</div>
+

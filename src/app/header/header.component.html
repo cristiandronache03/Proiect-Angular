@@ -1,0 +1,53 @@
+<nav class="navbar navbar-expand-lg">
+
+  <ng-container *ngIf="!isLoggedIn ;else loggedIn">
+
+    <a class="nav-link" [routerLink]="'register'">Register <span class="sr-only">(current)</span></a>
+    <a class="nav-link" [routerLink]="'login'">Login</a>
+
+  </ng-container>
+  <ng-template #loggedIn>
+
+    <div class="vertical-nav bg-white" id="sidebar">
+      <div class="py-4 px-3 mb-4 bg-light">
+        <div class="media d-flex align-items-center"><img [src]="image" (error)="this.image = '/assets/user.png'" alt="..." width="65" class="mr-3 rounded-circle img-thumbnail shadow-sm">
+          <div class="media-body">
+            <div>{{firstName}}</div>
+            <a class="profile-link"(click)="goToProfile()">
+              View Profile
+            </a>
+          </div>
+        </div>
+      </div>
+      <ul class="nav flex-column bg-white mb-0">
+        <li class="nav-item">
+          <a href="feed" class="nav-link text-dark font-italic bg-light">
+                    <i class="fa fa-th-large mr-3 text-primary fa-fw"></i>
+                    Feed
+                </a>
+        </li>
+        <li class="nav-item">
+          <a href="followers" class="nav-link text-dark font-italic bg-light">
+                    <i class="fa fa-address-card mr-3 text-primary fa-fw"></i>
+                    Followers
+                </a>
+        </li>
+        <li class="nav-item">   
+          <div class="input-group">
+            <input type="search" (keyup)="getVal($event.target.value)" class="form-control rounded"
+              style="max-width:300px;margin-right:15px;" placeholder="Search" aria-label="Search"
+              aria-describedby="search-addon" />
+            <button type="button" class="btn btn-outline-primary" (click)="goToSearch()"><i class="fas fa-angle-double-right"></i></button>
+          </div> 
+        </li>
+      </ul>
+    
+      <a class="nav-logout" (click)="logOut()" [routerLink]="'login'" style="min-height:100px">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-dash-circle-fill" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM4.5 7.5a.5.5 0 0 0 0 1h7a.5.5 0 0 0 0-1h-7z"/>
+        </svg>
+        Log out</a>
+    </div>
+  </ng-template>
+</nav>
+

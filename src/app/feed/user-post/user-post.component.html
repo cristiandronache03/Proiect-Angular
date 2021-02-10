@@ -1,0 +1,14 @@
+
+<div class="card" style="width: 18rem; margin-bottom: 30px">
+  <div class="card-body" (click)="goToUserPostDetails()">
+    <h5 class="card-title">{{ userPost.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted" (click)="goToUserProfile()">{{ userPost.username }}</h6>
+    <img class="card-img-top" [src]="userPost.imgUrl">
+    <p class="card-text">{{ userPost.text | truncatePipe:30 }}</p>
+  </div>
+  <div class="card-footer">
+    <button type="button" class="btn btn-rounded px-0"><i class="far fa-thumbs-up" aria-hidden="true" (click)="likePost(userPost.id)"></i></button> {{userPost.likes}}
+    <div class="divider"></div>
+    <i class="fas fa-trash-alt" *ngIf="userid==userPost.userId" (click)="deletePost(userPost.id)"></i>
+  </div>
+</div>

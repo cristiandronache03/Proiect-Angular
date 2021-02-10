@@ -1,0 +1,12 @@
+<div
+  class="card"
+  style="width: 18rem; margin-bottom: 30px"
+  >
+  <div class="card-body" (click)="goToUserPostDetails()">
+    <h5 class="card-title">{{ userPost.title }}</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{ userPost.username }}</h6>
+    <img class="card-img-top" [src]="userPost.imgUrl">
+    <p class="card-text">{{ userPost.text }}</p>
+  </div>
+</div>
+

@@ -1,0 +1,55 @@
+<div class="container full-height">
+  <div class="row inline">
+    <div class="col-5 pulse">
+      <div class="alert alert-danger" role="alert" *ngIf="showError">
+        Wrong email or password!
+      </div>
+      <h1>Login</h1>
+      <form [formGroup]="loginForm">
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="Enter the email" formControlName="email" class="form-control" maxlength="30"
+            required />
+          <div *ngIf="email.invalid && email.touched">
+            <div *ngIf="email.errors.required">
+              <p class="required-color">Email is required</p>
+            </div>
+            <div *ngIf="email.errors.email">
+              <p class="required-color">Email is invalid</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Password</label>
+          <input type="password" placeholder="Enter the password" formControlName="password" class="form-control"
+            maxlength="30" minlength="8" required />
+          <div *ngIf="password.invalid && password.touched">
+            <div *ngIf="password.errors.required">
+              <p class="required-color">Password is required</p>
+            </div>
+            <div *ngIf="password.errors.minlength">
+              <p class="required-color">Password cannot be less than 8 characters</p>
+            </div>
+          </div>
+        </div>
+      </form>
+      <div class="col-14">
+        <div class="alert alert-danger" role="alert" *ngIf="loginForm.invalid && submittedPressed">
+          <p>Form is invalid!</p>
+        </div>
+      </div>
+
+      <div class="btn-toolbar">
+        <button type="submit" class="btn btn-dark bottom-center" style="margin-left:auto; margin-right:auto;"
+          (click)="submit()">
+          Login
+        </button>
+      </div>
+      <p align="center">
+        <a class="nav-link" routerLink="/register">Don't have an account?</a>
+      </p>
+
+    </div>
+  </div>
+</div>
